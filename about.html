@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Aliah</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1 class="logo">Aliah</h1>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <button id="themeToggle" class="toggle-btn">
+  <i class="fa-solid fa-moon"></i>
+</button>
+
+  </nav>
+</header>
+
+<section class="content">
+  <h2>About Me</h2>
+  <p>Hey, <strong>I’m Ali.</strong> Life for me is all about the people and pets I love. My family keeps me grounded, my friends make life fun and full of laughter, and my pets… well, they just make everything better.</p>
+  <p>I love spending time with the people who matter most, sharing stories, making memories, and just being together. Whether it’s a quiet afternoon at home, a random adventure, or a silly moment that makes us all laugh, these are the things I hold close to my heart.</p>
+  <p>I’m also someone who notices the little things, the warmth of the sun, the comfort of a cozy space, or a playful moment with a pet, and I try to carry that joy with me every day.</p>
+  <p>This space is my little corner to share those moments, and maybe, in some way, make you smile too.</p>
+
+  <div class="info-grid">
+  <div class="info-card hidden">
+    <h3>Family</h3>
+    <img src="family1.jpg" alt="Family" class="card-image" />
+    <img src="family2.jpg" alt="Family" class="card-image" /> 
+    <img src="family3.jpg" alt="Family" class="card-image" />
+    <p>My loving family keeps me grounded and supported.</p>
+  </div>
+
+  <div class="info-card hidden">
+    <h3>Friends</h3>
+    <img src="friends1.jpg" alt="Family" class="card-image" />
+    <img src="friends2.jpg" alt="Family" class="card-image" />
+    <img src="friends3.jpg" alt="Family" class="card-image" />
+    <img src="friends4.jpg" alt="Family" class="card-image" />
+    <img src="friends5.jpg" alt="Family" class="card-image" />
+    <img src="friends6.jpg" alt="Family" class="card-image" />
+    <p>Friends make life fun, full of laughter and adventures.</p>
+  </div>
+
+  <div class="info-card hidden">
+    <h3>Pets</h3>
+    <img src="pets1.jpg" alt="Family" class="card-image" />
+    <img src="pets2.jpg" alt="Family" class="card-image" />
+    <img src="pets3.jpg" alt="Family" class="card-image" />
+    <img src="pets4.jpg" alt="Family" class="card-image" />
+    <p>My pets bring joy, comfort, and playfulness every day.</p>
+  </div>
+</div>
+</section>
+
+<footer>
+  <p>© 2025 Aliah</p>
+</footer>
+
+<script>
+const body = document.body;
+const toggleBtn = document.getElementById('themeToggle');
+const icon = toggleBtn ? toggleBtn.querySelector('i') : null;
+
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+  body.classList.add('dark');
+  if (icon) icon.classList.replace('fa-moon', 'fa-sun');
+}
+
+if (toggleBtn) {
+  toggleBtn.addEventListener('click', () => {
+    body.classList.toggle('dark');
+
+    if (body.classList.contains('dark')) {
+      localStorage.setItem('theme', 'dark');
+      if (icon) icon.classList.replace('fa-moon', 'fa-sun');
+    } else {
+      localStorage.setItem('theme', 'light');
+      if (icon) icon.classList.replace('fa-sun', 'fa-moon');
+    }
+  });
+
+  document.querySelectorAll('.hidden').forEach(el => {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  });
+  observer.observe(el);
+});
+}
+</script>
+
+
+</body>
+</html>

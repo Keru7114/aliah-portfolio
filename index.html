@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aliah | Student Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1 class="logo">Aliah</h1>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <button id="themeToggle" class="toggle-btn">
+  <i class="fa-solid fa-moon"></i>
+</button>
+
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h2>Hello, I'm <span>Aliah</span></h2>
+    <p>Welcome to a gentle corner of my world, where I share pastel-hued stories of life, cherished moments with friends, family, and beloved pets that fill each day with warmth, joy, and love.</p>
+    <a href="about.html" class="btn">About Me</a>
+  </div>
+  <img src="profile.jpg" alt="Profile" class="hero-img">
+</section>
+
+<footer>
+  <p>© 2025 Aliah | calabriaaliahjial@gmail.com</p>
+</footer>
+
+<script>
+const body = document.body;
+const toggleBtn = document.getElementById('themeToggle');
+const icon = toggleBtn ? toggleBtn.querySelector('i') : null;
+
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+  body.classList.add('dark');
+  if (icon) icon.classList.replace('fa-moon', 'fa-sun');
+}
+
+if (toggleBtn) {
+  toggleBtn.addEventListener('click', () => {
+    body.classList.toggle('dark');
+
+    if (body.classList.contains('dark')) {
+      localStorage.setItem('theme', 'dark');
+      if (icon) icon.classList.replace('fa-moon', 'fa-sun');
+    } else {
+      localStorage.setItem('theme', 'light');
+      if (icon) icon.classList.replace('fa-sun', 'fa-moon');
+    }
+  });
+}
+</script>
+
+</body>
+</html>
